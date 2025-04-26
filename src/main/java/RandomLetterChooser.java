@@ -1,20 +1,29 @@
-public class RandomLetterChooser extends RandomStringChooser
+import java.util.*;
+
+public class RandomStringChooser
 {
-	
-	public RandomLetterChooser(String str)
-	{ 
-	super(getSingleLetters(str));
-		
-	}
-	
-	
-	public static String[] getSingleLetters(String str)
-	{ 
-		String[] letterArray = new String[str.length()];
-		for(int i=0; i<str.length(); i++)
-		{
-			letterArray[i] = ""+str.charAt(i);
-		}
-		return letterArray;
-	}
+    private String[] a;
+    private int t;
+
+    public RandomStringChooser(String[] r)
+    {
+        a = new String[r.length];
+        for (int i = 0; i < r.length; i++) {
+            a[i] = r[i];
+        }
+        t = a.length;
+    }
+
+    public String getNext()
+    {
+        if (t == 0) {
+            return "NONE";
+        }
+        int index = (int) (Math.random() * t);
+        String selected = values[index];
+        a[index] = a[t - 1];
+        t--;
+
+        return selected;
+    }
 }
