@@ -2,30 +2,30 @@ import java.util.*;
 
 public class RandomStringChooser
 {
-    private String[] a;
-    private int t;
+    private String[] values;
+    private int valuesRemaining;
 
-    public RandomStringChooser(String[] v)
+    public RandomStringChooser(String[] vals)
     {
-        a = new String[v.length];
-        for (int i = 0; i < v.length; i++) {
-            a[i] = v[i];
+        values = new String[vals.length];
+        for (int i = 0; i < vals.length; i++) {
+            values[i] = vals[i];
         }
-        t = a.length;
+        valuesRemaining = values.length;
     }
 
     public String getNext()
     {
-        if (t == 0) {
+        if (valuesRemaining == 0) {
             return "NONE";
         }
 
-        int index = (int) (Math.random() * t);
-        String selected = a[index];
+        int index = (int) (Math.random() * valuesRemaining);
+        String selected = values[index];
 
         // Swap the selected value with the last available one
-        a[index] = a[t - 1];
-        t--;
+        values[index] = values[valuesRemaining - 1];
+        valuesRemaining--;
 
         return selected;
     }
