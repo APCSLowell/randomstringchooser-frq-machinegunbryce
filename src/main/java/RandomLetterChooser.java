@@ -20,7 +20,7 @@ public class RandomStringChooser
             return "NONE";
         }
         int index = (int) (Math.random() * t);
-        String selected = values[index];
+        String selected = a[index];
         a[index] = a[t - 1];
         t--;
 
