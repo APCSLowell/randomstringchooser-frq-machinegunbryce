@@ -5,11 +5,11 @@ public class RandomStringChooser
     private String[] a;
     private int t;
 
-    public RandomStringChooser(String[] r)
+    public RandomStringChooser(String[] v)
     {
-        a = new String[r.length];
-        for (int i = 0; i < r.length; i++) {
-            a[i] = r[i];
+        a = new String[v.length];
+        for (int i = 0; i < v.length; i++) {
+            a[i] = v[i];
         }
         t = a.length;
     }
@@ -19,8 +19,11 @@ public class RandomStringChooser
         if (t == 0) {
             return "NONE";
         }
+
         int index = (int) (Math.random() * t);
         String selected = a[index];
+
+        // Swap the selected value with the last available one
         a[index] = a[t - 1];
         t--;
 
